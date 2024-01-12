@@ -10,7 +10,7 @@ namespace Bonbones2024.Windows
             InitializeComponent();
             _servicios = new ServiciosTipoDeRelleno();
         }
-        private List<TipoDeRelleno> lista;
+        private List<TipoDeRelleno>? lista;
         private readonly ServiciosTipoDeRelleno _servicios;
         private void tsbCerrar_Click(object sender, EventArgs e)
         {
