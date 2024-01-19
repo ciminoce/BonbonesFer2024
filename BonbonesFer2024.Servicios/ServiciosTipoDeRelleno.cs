@@ -10,11 +10,48 @@ namespace BonbonesFer2024.Servicios
         {
             _repositorio=new RepositorioTiposDeRelleno();
         }
+        public bool EstaRelacionado(TipoDeRelleno tipoDeRelleno)
+        {
+            try
+            {
+                return _repositorio.EstaRelacionada(tipoDeRelleno);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public void Borrar(TipoDeRelleno relleno)
+        {
+            try
+            {
+                _repositorio.Borrar(relleno);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public List<TipoDeRelleno> GetLista()
         {
             try
             {
                 return _repositorio.GetLista();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public bool Existe(TipoDeRelleno tipoDeRelleno)
+        {
+            try
+            {
+                return _repositorio.Existe(tipoDeRelleno);
             }
             catch (Exception)
             {
@@ -30,6 +67,10 @@ namespace BonbonesFer2024.Servicios
                 if (tipoRelleno.TipoDeRellenoId==0)
                 {
                     _repositorio.Agregar(tipoRelleno);
+                }
+                else
+                {
+                    _repositorio.Editar(tipoRelleno);
                 }
             }
             catch (Exception)

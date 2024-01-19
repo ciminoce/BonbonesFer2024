@@ -18,11 +18,14 @@ namespace Bonbones2024.Windows
         {
             if (ValidarDatos())
             {
-                tipoRelleno = new TipoDeRelleno()
+                if (tipoRelleno==null)
                 {
-                    Descripcion = txtRelleno.Text,
-                    Stock = (int)nudStock.Value
-                };
+                    tipoRelleno = new TipoDeRelleno();
+                }
+
+                tipoRelleno.Descripcion = txtRelleno.Text;
+                tipoRelleno.Stock = (int)nudStock.Value;
+                
                 DialogResult = DialogResult.OK;
             }
         }
@@ -42,6 +45,21 @@ namespace Bonbones2024.Windows
         public TipoDeRelleno GetTipo()
         {
             return tipoRelleno;
+        }
+
+        public void SetTipo(TipoDeRelleno? relleno)
+        {
+            tipoRelleno = relleno;
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            if(tipoRelleno != null)
+            {
+                txtRelleno.Text = tipoRelleno.Descripcion;
+                nudStock.Value=tipoRelleno.Stock;
+            }
         }
     }
 }
